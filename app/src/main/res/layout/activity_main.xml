@@ -1,0 +1,212 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.example.android.quizapp.MainActivity"
+    >
+    <LinearLayout
+
+
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+  >
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Cyber Security Quiz App"
+        android:textSize="26sp"
+        android:paddingTop="15dp"
+        android:paddingLeft="10dp"
+        android:textStyle="bold"
+        />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="1. Which type of cyber attack is commonly performed through emails?"
+        android:textSize="18sp"
+        android:paddingLeft="10dp"
+        />
+
+    <RadioGroup
+        android:id="@+id/cyberattack"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:paddingTop="15dp"
+        android:checked="false"
+        >
+
+        <RadioButton
+            android:id="@+id/trojan"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Trojan"
+            android:checked="false" />
+
+        <RadioButton
+            android:id="@+id/phishing"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Phishing"
+            android:checked="false"
+
+            />
+        <RadioButton
+            android:id="@+id/worms"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Worms"
+            android:checked="false"
+
+            />
+        <RadioButton
+            android:id="@+id/ransomware"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Ransomware"
+            android:checked="false"/>
+
+    </RadioGroup>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="2. For maximum security, passwords should be made up of?"
+        android:textSize="18sp"
+        android:paddingLeft="15dp"
+        />
+
+    <RadioGroup
+        android:id="@+id/password"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:paddingTop="10dp"
+        >
+
+
+    <RadioButton
+        android:id="@+id/lettersonly"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Lower case letters only"
+        android:checked="false"
+
+        />
+
+    <RadioButton
+        android:id="@+id/memorablenames"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Memorable names and dates"
+        android:checked="false"
+        />
+    <RadioButton
+        android:id="@+id/sequenceofnumbers"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="A sequence of numbers or letters"
+        android:checked="false"
+        />
+    <RadioButton
+        android:id="@+id/upperandlower"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Upper and lower case letters, numbers and symbols"
+        android:checked="false"/>
+
+
+
+
+    </RadioGroup>
+
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="3. Which three are common forms of cyber attacks?"
+            android:textSize="18sp"
+            android:paddingLeft="10dp"
+            />
+        <CheckBox
+            android:id="@+id/baiting"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Baiting"
+            android:checked="false"
+            />
+        <CheckBox
+            android:id="@+id/ransom"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Ransomware"
+            android:checked="false"
+            />
+        <CheckBox
+            android:id="@+id/fishing"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Fishing"
+            android:checked="false"
+            />
+        <CheckBox
+            android:id="@+id/travellingworms"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Network-Travelling Worms"
+            android:checked="false"
+            />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="4. What is the process of encoding information in a way so that only someone with a key can decode it?"
+            android:textSize="18sp"
+            android:paddingLeft="10dp"
+            />
+        <CheckBox
+            android:id="@+id/compression"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Compression"
+            android:checked="false"
+            />
+        <CheckBox
+            android:id="@+id/systematic"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Systematic Variation"
+            android:checked="false"
+            />
+        <CheckBox
+            android:id="@+id/encyptiom"
+            android:layout_width="wrap_content"
+
+            android:layout_height="wrap_content"
+            android:text="Encryption"
+            android:checked="false"
+            />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="5. To protect a computer from virus you should install......in your computer?"
+            android:textSize="18sp"
+            android:paddingLeft="10dp"
+            />
+        <EditText
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:hint="Type answer here"
+            android:textSize="20sp"
+            android:id="@+id/fieldtext"
+            />
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Submit"
+            android:onClick="submitQuizAnswers"
+            />
+    </LinearLayout>
+</ScrollView>
