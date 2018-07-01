@@ -1,17 +1,15 @@
 package com.example.android.quizapp;
 
-import android.content.Intent;
+
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.Toast;
 
-import static android.provider.AlarmClock.EXTRA_MESSAGE;
 
 public class MainActivity extends AppCompatActivity {
     int question1Score = 0;
@@ -31,11 +29,11 @@ public class MainActivity extends AppCompatActivity {
     RadioButton question32;
     RadioButton question33;
     EditText question5Answer;
-    int totalQuizScore = 5;
+    final int totalQuizScore = 5;
 
-    RadioGroup groupCyberAttack;
-    RadioGroup groupEncodingInformation;
-    Button submitButton;
+    private RadioGroup groupCyberAttack;
+    private RadioGroup groupEncodingInformation;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -67,6 +65,7 @@ public class MainActivity extends AppCompatActivity {
 
         } else {
 
+            question1Score = 0;
         }
         RadioGroup selectedRadioGroupQ2 = findViewById(R.id.password_group);
         int selected2 = selectedRadioGroupQ2.getCheckedRadioButtonId();
@@ -74,7 +73,7 @@ public class MainActivity extends AppCompatActivity {
         if (button2 != null && "Upper and lower case letters, numbers and symbols".equals(button2.getText())) {
             question2Score = 1;
         } else {
-
+            question2Score = 0;
         }
 
         if (cbBaiting.isChecked() && cbRansom.isChecked() && cbTravellingWorms.isChecked()) {
