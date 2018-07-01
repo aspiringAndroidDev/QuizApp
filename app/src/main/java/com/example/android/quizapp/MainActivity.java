@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.RadioButton;
@@ -13,24 +14,28 @@ import android.widget.Toast;
 import static android.provider.AlarmClock.EXTRA_MESSAGE;
 
 public class MainActivity extends AppCompatActivity {
-
-    int score1 = 0;
-    int score2 = 0;
-    int score3 = 0;
-    int score4 = 0;
-    int score5 = 0;
+    int question1Score = 0;
+    int question2Score = 0;
+    int question3Score = 0;
+    int question4Score = 0;
+    int question5Score = 0;
     RadioButton phishing;
     RadioButton worms;
     RadioButton trojan;
-    int finalscore;
-    CheckBox cb1;
-    CheckBox cb2;
-    CheckBox cb3;
-    CheckBox cb4;
-    CheckBox question41;
-    CheckBox question42;
-    CheckBox question43;
-    EditText edittext;
+    int finalScore;
+    CheckBox cbBaiting;
+    CheckBox cbRansom;
+    CheckBox cbPhishing;
+    CheckBox cbTravellingWorms;
+    RadioButton question31;
+    RadioButton question32;
+    RadioButton question33;
+    EditText question5Answer;
+    int totalQuizScore = 5;
+
+    RadioGroup groupCyberAttack;
+    RadioGroup groupEncodingInformation;
+    Button submitButton;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -39,70 +44,78 @@ public class MainActivity extends AppCompatActivity {
         phishing = findViewById(R.id.phishing);
         worms = findViewById(R.id.worms);
         trojan = findViewById(R.id.trojan);
-        cb1 = findViewById(R.id.baiting);
-        cb2 = findViewById(R.id.ransom);
-        cb3 = findViewById(R.id.fishing);
-        cb4 = findViewById(R.id.travellingworms);
-        question41 = findViewById(R.id.compression);
-        question42 = findViewById(R.id.systematic);
-        question43 = findViewById(R.id.encyptiom);
-    edittext = findViewById(R.id.fieldtext);
+        cbBaiting = findViewById(R.id.baiting);
+        cbRansom = findViewById(R.id.ransom);
+        cbPhishing = findViewById(R.id.fishing);
+        cbTravellingWorms = findViewById(R.id.travelling_worms);
+        question31 = findViewById(R.id.compression);
+        question32 = findViewById(R.id.systematic);
+        question33 = findViewById(R.id.encyptiom);
+        question5Answer = findViewById(R.id.fieldtext);
+
+        groupCyberAttack = findViewById(R.id.cyberattack);
+        groupEncodingInformation= findViewById(R.id.encoding_information);
 
     }
 
-    public void submitQuizAnswers(View v)
-    {
+    public void submitQuizAnswers(View view) {
 
-        RadioGroup group1 = findViewById(R.id.cyberattack);
-        int selected = group1.getCheckedRadioButtonId();
-        RadioButton button1 =  findViewById(selected);
-        if ("Phishing".equals(button1.getText())) {
-            score1 = score1+1;
+        int selectedRadioGroupQ1 = groupCyberAttack.getCheckedRadioButtonId();
+        RadioButton selectedRadioButton = findViewById(selectedRadioGroupQ1);
+        if (selectedRadioButton != null && "Phishing".equals(selectedRadioButton.getText())) {
+            question1Score = 1;
 
         } else {
 
         }
-        RadioGroup group2 = findViewById(R.id.password);
-        int selected2 = group2.getCheckedRadioButtonId();
-        RadioButton button2 =  findViewById(selected2);
-        if ("Upper and lower case letters, numbers and symbols".equals(button2.getText())) {
-            score2 = score2+1;
+        RadioGroup selectedRadioGroupQ2 = findViewById(R.id.password_group);
+        int selected2 = selectedRadioGroupQ2.getCheckedRadioButtonId();
+        RadioButton button2 = findViewById(selected2);
+        if (button2 != null && "Upper and lower case letters, numbers and symbols".equals(button2.getText())) {
+            question2Score = 1;
         } else {
 
         }
 
-        if(cb1.isChecked()||cb2.isChecked()||cb4.isChecked())
-        {
-            score3 = score3+1;
+        if (cbBaiting.isChecked() && cbRansom.isChecked() && cbTravellingWorms.isChecked()) {
+            question3Score = 1;
 
+        } else {
+            question3Score = 0;
+
+        }
+        int selected1 = groupEncodingInformation.getCheckedRadioButtonId();
+        RadioButton selectedRadioButtonQ4 = findViewById(selected1);
+        if (selectedRadioButtonQ4 != null && "Encryption".equals(selectedRadioButtonQ4.getText())) {
+            question4Score = 1;
+
+        } else {
+            question4Score = 0;
+
+        }
+        String userAnswer = question5Answer.getText().toString();
+
+        if (userAnswer.equalsIgnoreCase("antivirus")) {
+            question5Score = 1;
+        }
+        else {
+            question5Score = 0;
+
+        }
+
+
+        finalScore = question1Score + question2Score + question3Score + question4Score + question5Score;
+        if(finalScore == totalQuizScore) {
+
+            String finalScoreMessage = "Your score is " + String.valueOf(finalScore) + "/5 Well done!!!!";
+            Toast.makeText(this, finalScoreMessage, Toast.LENGTH_LONG).show();
         }
         else
         {
-            score3 = score3+0;
-        }
-        if(question43.isChecked()&&question42.isChecked()&&cb4.isChecked())
-        {
-            score4 = score4+0;
+            String finalScoreMessage = "Your score is " + String.valueOf(finalScore) + "/5 You may take the quiz again to improve your score!!!!";
+            Toast.makeText(this, finalScoreMessage, Toast.LENGTH_LONG).show();
 
         }
-        else if (question43.isChecked())
-        {
-            score4 = score4+1;
-
-        }
-        else
-        {
-            score4 = score4+0;
-
-        }
-        String toCompare = edittext.getText().toString();
-
-        if (toCompare.equalsIgnoreCase("antivirus")) {
-            score5 = score5+1;
-        }
-
-        finalscore=score1+score2+score3+score4+score5;
-        Toast.makeText(this,String.valueOf(finalscore), Toast.LENGTH_SHORT).show();
 
     }
 }
