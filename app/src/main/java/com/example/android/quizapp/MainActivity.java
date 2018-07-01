@@ -12,11 +12,13 @@ import android.widget.Toast;
 
 
 public class MainActivity extends AppCompatActivity {
-    int question1Score = 0;
-    int question2Score = 0;
-    int question3Score = 0;
-    int question4Score = 0;
-    int question5Score = 0;
+
+    //Variable declaration for all views used
+    int questionOneScore = 0;
+    int questionTwoScore = 0;
+    int questionThreeScore = 0;
+    int questionFourScore = 0;
+    int questionFiveScore = 0;
     RadioButton phishing;
     RadioButton worms;
     RadioButton trojan;
@@ -56,65 +58,69 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
+    //submitQuizAnswers methods does checks to determine right and wrong answers
+    //The sequence is that of questions 1-5 respectively
+
     public void submitQuizAnswers(View view) {
 
-        int selectedRadioGroupQ1 = groupCyberAttack.getCheckedRadioButtonId();
-        RadioButton selectedRadioButton = findViewById(selectedRadioGroupQ1);
+        int selectedRadioQ1 = groupCyberAttack.getCheckedRadioButtonId();
+        RadioButton selectedRadioButton = findViewById(selectedRadioQ1);
         if (selectedRadioButton != null && "Phishing".equals(selectedRadioButton.getText())) {
-            question1Score = 1;
+            questionOneScore = 1;
 
         } else {
 
-            question1Score = 0;
+            questionOneScore = 0;
         }
         RadioGroup selectedRadioGroupQ2 = findViewById(R.id.password_group);
-        int selected2 = selectedRadioGroupQ2.getCheckedRadioButtonId();
-        RadioButton button2 = findViewById(selected2);
-        if (button2 != null && "Upper and lower case letters, numbers and symbols".equals(button2.getText())) {
-            question2Score = 1;
+        int selectedButtonQ2 = selectedRadioGroupQ2.getCheckedRadioButtonId();
+        RadioButton buttonId = findViewById(selectedButtonQ2);
+        if (buttonId != null && "Upper and lower case letters, numbers and symbols".equals(buttonId.getText())) {
+            questionTwoScore = 1;
         } else {
-            question2Score = 0;
+            questionTwoScore = 0;
         }
 
         if (cbBaiting.isChecked() && cbRansom.isChecked() && cbTravellingWorms.isChecked()) {
-            question3Score = 1;
+            questionThreeScore = 1;
 
         } else {
-            question3Score = 0;
+            questionThreeScore = 0;
 
         }
-        int selected1 = groupEncodingInformation.getCheckedRadioButtonId();
-        RadioButton selectedRadioButtonQ4 = findViewById(selected1);
+        int selectedRadioQ4 = groupEncodingInformation.getCheckedRadioButtonId();
+        RadioButton selectedRadioButtonQ4 = findViewById(selectedRadioQ4);
         if (selectedRadioButtonQ4 != null && "Encryption".equals(selectedRadioButtonQ4.getText())) {
-            question4Score = 1;
+            questionFourScore = 1;
 
         } else {
-            question4Score = 0;
+            questionFourScore = 0;
 
         }
         String userAnswer = question5Answer.getText().toString();
 
         if (userAnswer.equalsIgnoreCase("antivirus")) {
-            question5Score = 1;
+            questionFiveScore = 1;
         }
         else {
-            question5Score = 0;
+            questionFiveScore = 0;
 
         }
 
 
-        finalScore = question1Score + question2Score + question3Score + question4Score + question5Score;
+        finalScore = questionOneScore + questionTwoScore + questionThreeScore + questionFourScore + questionFiveScore;
         if(finalScore == totalQuizScore) {
 
-            String finalScoreMessage = "Your score is " + String.valueOf(finalScore) + "/5 Well done!!!!";
+            String finalScoreMessage = "Your score is " + String.valueOf(finalScore) + "/5. Well done!!!!";
             Toast.makeText(this, finalScoreMessage, Toast.LENGTH_LONG).show();
         }
         else
         {
-            String finalScoreMessage = "Your score is " + String.valueOf(finalScore) + "/5 You may take the quiz again to improve your score!!!!";
+            String finalScoreMessage = "Your score is " + String.valueOf(finalScore) + "/5. You may take the quiz again to improve your score!!!!";
             Toast.makeText(this, finalScoreMessage, Toast.LENGTH_LONG).show();
 
         }
+
 
     }
 }
